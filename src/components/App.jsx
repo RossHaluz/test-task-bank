@@ -1,16 +1,16 @@
+import { lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
+
+
+const Home = lazy(() => import('../pages/Home'));
+const CurrentRates = lazy(() => import('../pages/CurrentRates'))
+
 export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
+  return <Routes>
+    <Route path="/" element={<Layout/>}>
+      <Route index element={<Home/>}/>
+      <Route path="current" element={<CurrentRates/>}/>
+    </Route>
+    </Routes>
 };
